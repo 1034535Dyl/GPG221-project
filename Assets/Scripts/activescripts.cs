@@ -12,7 +12,7 @@ public class ActiveScriptsLabel : MonoBehaviour
 
     [Header("Label")]
     [SerializeField] private Vector3 worldOffset = new Vector3(0f, 2.2f, 0f);
-    [SerializeField] private bool faceMainCamera = true;
+    // [SerializeField] private bool faceMainCamera = true;
     [SerializeField] private string header = "Active Scripts:";
     [SerializeField] private int fontSize = 8;
     [SerializeField] private Color textColor = Color.white;

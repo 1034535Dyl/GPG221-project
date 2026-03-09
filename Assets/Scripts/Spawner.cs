@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
@@ -7,15 +9,16 @@ public class Spawner : MonoBehaviour
 
     [SerializeField]
     private GameObject prefab;
-
-    public void SpawnObjects()
+    
+    
+    public void Spawn()
     {
         for (int i = 0; i < amount; i++)
         {
             Instantiate(prefab, transform.position, Quaternion.Euler(
-                0f,
+                x: Random.Range(0, 5),
                 Random.Range(0f, 360f),
-                0f));
+                z: Random.Range(0, 5)));
         }
     }
 }

@@ -17,7 +17,7 @@ public class SpawnerEditor : Editor
         GUI.backgroundColor = Color.green;
         if (GUILayout.Button("SPAWN OBJECTS", GUILayout.Height(50)))
         {
-            spawner.SpawnObjects();
+            spawner.Spawn();
             Debug.Log("Objects spawned at " + spawner.transform.position);
         }
         GUI.backgroundColor = Color.white;
