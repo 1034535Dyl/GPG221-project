@@ -146,6 +146,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -744967892933103681, guid: be3ed9816d019ff4a85901f7a3aae376, type: 3}
+--- !u!1 &463307303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5887398972298153011, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+  m_PrefabInstance: {fileID: 759201755}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &463307304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463307303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e724e36405834fa192b36cd6a4e6059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anthill.AI.AntAIAgent
+  manualUpdate: 0
+  thinkInterval: 0.1
+  scenario: {fileID: 11400000, guid: 90562238a2f7ae144a258f82b3523fe7, type: 2}
 --- !u!1001 &759201755
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,13 +174,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 18571221331204296, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 657241345695336789, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: speed
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 657241345695336789, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3592695803106566851, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: turnSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3616344462216130406, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: turnSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983173555627613524, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5354410585369928361, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: turnSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5887398972298153011, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
       propertyPath: m_Name
       value: myguy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365104715260780930, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: turnSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798880898461789659, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      propertyPath: turnSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7417273286814180873, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -205,7 +257,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5887398972298153011, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463307304}
   m_SourcePrefab: {fileID: 100100000, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
 --- !u!1 &2081369994 stripped
 GameObject:
