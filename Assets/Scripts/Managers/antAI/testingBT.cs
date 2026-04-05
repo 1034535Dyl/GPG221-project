@@ -6,3 +6,4 @@ public enum Behaviourtree
     seebase = 3,
     nearbase = 4
 }
+

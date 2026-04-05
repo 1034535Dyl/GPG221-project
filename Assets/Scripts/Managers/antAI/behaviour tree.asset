@@ -27,7 +27,7 @@ MonoBehaviour:
   actions:
   - name: search for cargo
     isDefault: 0
-    state: {fileID: 0}
+    state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
     position: {x: 316.6667, y: 135}
     pre:
@@ -38,7 +38,7 @@ MonoBehaviour:
       value: 1
   - name: pickup cargo
     isDefault: 0
-    state: {fileID: 0}
+    state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
     position: {x: 546.6667, y: 135.66667}
     pre:
@@ -53,7 +53,7 @@ MonoBehaviour:
       value: 0
   - name: search base
     isDefault: 0
-    state: {fileID: 0}
+    state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
     position: {x: 787.33325, y: 142.33336}
     pre:
@@ -66,7 +66,7 @@ MonoBehaviour:
       value: 1
   - name: move to base
     isDefault: 0
-    state: {fileID: 0}
+    state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
     position: {x: 544.6666, y: 386.3333}
     pre:
@@ -81,7 +81,7 @@ MonoBehaviour:
       value: 1
   - name: unload cargo
     isDefault: 0
-    state: {fileID: 0}
+    state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
     position: {x: 784.6669, y: 377.66666}
     pre:
@@ -110,7 +110,7 @@ MonoBehaviour:
     - id: 0
       value: 1
   worldStates:
-  - position: {x: 1098.3334, y: 484.3333}
+  - position: {x: 1051.0807, y: 370.04755}
     isAutoUpdate: 1
     list:
     - id: 0

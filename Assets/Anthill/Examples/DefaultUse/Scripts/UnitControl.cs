@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UnitControl : MonoBehaviour
+public partial class UnitControl : MonoBehaviour
 {
 	public GameObject backpackRef;
 	private bool _hasCargo;

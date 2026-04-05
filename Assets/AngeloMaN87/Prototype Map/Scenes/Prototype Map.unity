@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Anthill.AI.AntAIAgent
   manualUpdate: 0
-  thinkInterval: 0.1
+  thinkInterval: 1
   scenario: {fileID: 11400000, guid: 90562238a2f7ae144a258f82b3523fe7, type: 2}
 --- !u!1001 &759201755
 PrefabInstance:
@@ -262,6 +262,37 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 463307304}
   m_SourcePrefab: {fileID: 100100000, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
+--- !u!1 &1694296940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694296941}
+  m_Layer: 0
+  m_Name: SearchCargo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1694296941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694296940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.80398, y: 0, z: -4.0374}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2081369994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3216579825125446628, guid: fc5a676d2c90b3d4f8a22e369c35950d, type: 3}
@@ -366,3 +397,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 8354416668599502667}
   - {fileID: 759201755}
+  - {fileID: 1694296941}
