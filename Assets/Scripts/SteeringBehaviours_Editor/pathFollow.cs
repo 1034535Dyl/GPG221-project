@@ -30,20 +30,20 @@ public class PathFollow : SteeringBehaviour_Base
 
     private void FixedUpdate()
     {
-        if (pathFinder == null || pathFinder.Path == null || pathFinder.Path.corners.Length == 0)
+        if (pathFinder == null || pathFinder.path == null || pathFinder.path.corners.Length == 0)
             return;
 
         // Reset index whenever a new path is received
-        if (pathFinder.Path != _lastPath)
+        if (pathFinder.path != _lastPath)
         {
             currentWaypointIndex = 0;
-            _lastPath = pathFinder.Path;
+            _lastPath = pathFinder.path;
         }
 
-        if (currentWaypointIndex >= pathFinder.Path.corners.Length)
+        if (currentWaypointIndex >= pathFinder.path.corners.Length)
             return;
 
-        Vector3 target = pathFinder.Path.corners[currentWaypointIndex];
+        Vector3 target = pathFinder.path.corners[currentWaypointIndex];
         Vector3 toTarget = target - transform.position;
         toTarget.y = 0f; // keep movement flat
 
@@ -66,19 +66,19 @@ public class PathFollow : SteeringBehaviour_Base
 
     private void OnDrawGizmos()
     {
-        if (pathFinder == null || pathFinder.Path == null || pathFinder.Path.corners.Length == 0)
+        if (pathFinder == null || pathFinder.path == null || pathFinder.path.corners.Length == 0)
             return;
 
         // Draw remaining path from current waypoint
         Gizmos.color = Color.cyan;
-        for (int i = currentWaypointIndex; i < pathFinder.Path.corners.Length - 1; i++)
-            Gizmos.DrawLine(pathFinder.Path.corners[i], pathFinder.Path.corners[i + 1]);
+        for (int i = currentWaypointIndex; i < pathFinder.path.corners.Length - 1; i++)
+            Gizmos.DrawLine(pathFinder.path.corners[i], pathFinder.path.corners[i + 1]);
 
         // Highlight next waypoint
-        if (currentWaypointIndex < pathFinder.Path.corners.Length)
+        if (currentWaypointIndex < pathFinder.path.corners.Length)
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(pathFinder.Path.corners[currentWaypointIndex], 0.2f);
+            Gizmos.DrawSphere(pathFinder.path.corners[currentWaypointIndex], 0.2f);
         }
     }
 }

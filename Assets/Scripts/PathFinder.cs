@@ -1,17 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class PathFinder : MonoBehaviour
 {
     public Transform targetTransform;
-    public NavMeshPath Path;
+    public NavMeshPath path;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Path = new NavMeshPath();
+        path = new NavMeshPath();
     }
 
     // Update is called once per frame
@@ -22,25 +21,25 @@ public class PathFinder : MonoBehaviour
             return;
         }
 
-        if (Path == null)
+        if (path == null)
         {
-            Path = new NavMeshPath();
+            path = new NavMeshPath();
         }
 
-        NavMesh.CalculatePath(transform.position, targetTransform.position, NavMesh.AllAreas, Path);
+        NavMesh.CalculatePath(transform.position, targetTransform.position, NavMesh.AllAreas, path);
     }
 
     private void OnDrawGizmos()
     {
-        if (Path == null || Path.corners == null || Path.corners.Length == 0)
+        if (path == null || path.corners == null || path.corners.Length == 0)
         {
             return;
         }
 
         Vector3 lastPos = Vector3.zero;
-        for (var index = 0; index < Path.corners.Length; index++)
+        for (var index = 0; index < path.corners.Length; index++)
         {
-            var pathCorner = Path.corners[index];
+            var pathCorner = path.corners[index];
 
             if (index != 0)
             {

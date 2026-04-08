@@ -35,20 +35,20 @@ public class NPCPathFollower : MonoBehaviour
 
     private void Update()
     {
-        if (pathFinder == null || pathFinder.Path == null || pathFinder.Path.corners.Length == 0)
+        if (pathFinder == null || pathFinder.path == null || pathFinder.path.corners.Length == 0)
         {
             isMoving = false;
             return;
         }
 
         // Reset waypoint index if path changes
-        if (currentWaypointIndex >= pathFinder.Path.corners.Length)
+        if (currentWaypointIndex >= pathFinder.path.corners.Length)
         {
             currentWaypointIndex = 0;
         }
 
         // Get current target waypoint
-        currentTarget = pathFinder.Path.corners[currentWaypointIndex];
+        currentTarget = pathFinder.path.corners[currentWaypointIndex];
 
         // Check if reached current waypoint
         if (Vector3.Distance(transform.position, currentTarget) < stoppingDistance)
@@ -56,13 +56,13 @@ public class NPCPathFollower : MonoBehaviour
             currentWaypointIndex++;
             
             // Check if reached end of path
-            if (currentWaypointIndex >= pathFinder.Path.corners.Length)
+            if (currentWaypointIndex >= pathFinder.path.corners.Length)
             {
                 isMoving = false;
                 return;
             }
 
-            currentTarget = pathFinder.Path.corners[currentWaypointIndex];
+            currentTarget = pathFinder.path.corners[currentWaypointIndex];
         }
 
         isMoving = true;
@@ -146,28 +146,28 @@ public class NPCPathFollower : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
-        if (pathFinder == null || pathFinder.Path == null || pathFinder.Path.corners.Length == 0)
+        if (pathFinder == null || pathFinder.path == null || pathFinder.path.corners.Length == 0)
             return;
 
         // Draw path
         Gizmos.color = Color.blue;
-        for (int i = 0; i < pathFinder.Path.corners.Length - 1; i++)
+        for (int i = 0; i < pathFinder.path.corners.Length - 1; i++)
         {
-            Gizmos.DrawLine(pathFinder.Path.corners[i], pathFinder.Path.corners[i + 1]);
+            Gizmos.DrawLine(pathFinder.path.corners[i], pathFinder.path.corners[i + 1]);
         }
 
         // Draw waypoint spheres
         Gizmos.color = Color.yellow;
-        foreach (Vector3 corner in pathFinder.Path.corners)
+        foreach (Vector3 corner in pathFinder.path.corners)
         {
             Gizmos.DrawSphere(corner, 0.15f);
         }
 
         // Highlight current target waypoint
-        if (currentWaypointIndex < pathFinder.Path.corners.Length)
+        if (currentWaypointIndex < pathFinder.path.corners.Length)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(pathFinder.Path.corners[currentWaypointIndex], 0.2f);
+            Gizmos.DrawSphere(pathFinder.path.corners[currentWaypointIndex], 0.2f);
         }
 
         // Draw stopping distance
