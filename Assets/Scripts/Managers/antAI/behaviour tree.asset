@@ -33,7 +33,7 @@ MonoBehaviour:
     isDefault: 1
     state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
-    position: {x: 260, y: 80}
+    position: {x: 247.33331, y: 41.999992}
     pre:
     - id: 2
       value: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
-    position: {x: 246.74298, y: 415.76993}
+    position: {x: 246.74298, y: 283.76993}
     pre:
     - id: 2
       value: 1
@@ -59,7 +59,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
-    position: {x: 461.50934, y: 416.6591}
+    position: {x: 460.17603, y: 284.6591}
     pre:
     - id: 2
       value: 1
@@ -74,7 +74,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
-    position: {x: 713.24524, y: 407.6029}
+    position: {x: 662.5786, y: 288.93625}
     pre:
     - id: 2
       value: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
-    position: {x: 520, y: 80}
+    position: {x: 455.3333, y: 44}
     pre:
     - id: 1
       value: 0
@@ -100,9 +100,9 @@ MonoBehaviour:
       value: 1
   - name: has cargo
     isDefault: 0
-    state: {fileID: 0}
+    state: {fileID: 1195622016704046871, guid: f6139f01ab97d144b958ea87972033ef, type: 3}
     cost: 0
-    position: {x: 776, y: 106}
+    position: {x: 658.6666, y: 41.999992}
     pre:
     - id: 1
       value: 1

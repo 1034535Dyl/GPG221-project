@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356ffcbc14abf1243bd670dc8b2bd6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Isense_MyGuy
-  hasCargo: 0
+  hasCargo: 1
   isCargoDelivered: 0
   nearbase: 0
   seeCargo: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvoidRight45
   maxDistance: 2
-  rb: {fileID: 0}
+  rb: {fileID: 463307344}
   turnSpeed: 15
 --- !u!114 &463307361
 MonoBehaviour:
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvoidRight15
   maxDistance: 2
-  rb: {fileID: 0}
+  rb: {fileID: 463307344}
   turnSpeed: 15
 --- !u!114 &463307362
 MonoBehaviour:
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvoidLeft45
   maxDistance: 2
-  rb: {fileID: 0}
+  rb: {fileID: 463307344}
   turnSpeed: 15
 --- !u!114 &463307363
 MonoBehaviour:
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvoidLeft15
   maxDistance: 2
-  rb: {fileID: 0}
+  rb: {fileID: 463307344}
   turnSpeed: 15
 --- !u!114 &463307364
 MonoBehaviour:
@@ -631,7 +631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6798880898461789659, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6798880898461789659, guid: ecc107af2ddfc5345897c4ee1a6d54c6, type: 3}
       propertyPath: turnSpeed
