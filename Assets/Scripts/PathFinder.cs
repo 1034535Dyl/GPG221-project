@@ -48,4 +48,9 @@ public class PathFinder : MonoBehaviour
             lastPos = pathCorner;
         }
     }
+
+    public void BuildPath(Vector3 targetPosition)
+    {
+        throw new System.NotImplementedException();
+    }
 }

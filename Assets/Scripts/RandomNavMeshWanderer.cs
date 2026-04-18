@@ -16,6 +16,7 @@ public class RandomNavMeshWanderer : MonoBehaviour
 
     private int _currentCornerIndex;
     private Vector3 _currentDestination;
+    private Transform _followTarget;
 
     private void Awake()
     {
@@ -32,18 +33,40 @@ public class RandomNavMeshWanderer : MonoBehaviour
         PickNewDestination();
     }
 
+    public void SetFollowTarget(Transform target)
+    {
+        _followTarget = target;
+        RebuildPathForCurrentMode();
+    }
+
+    public void ClearFollowTarget()
+    {
+        _followTarget = null;
+        RebuildPathForCurrentMode();
+    }
+
     private void FixedUpdate()
     {
         if (path == null || path.corners == null || path.corners.Length == 0)
         {
-            PickNewDestination();
+            RebuildPathForCurrentMode();
             return;
         }
 
         if (_currentCornerIndex >= path.corners.Length)
         {
-            PickNewDestination();
+            RebuildPathForCurrentMode();
             return;
+        }
+
+        if (_followTarget != null)
+        {
+            // Keep path synced if the follow target moves.
+            float targetDelta = (_currentDestination - _followTarget.position).sqrMagnitude;
+            if (targetDelta > destinationReachedDistance * destinationReachedDistance)
+            {
+                RebuildPathForCurrentMode();
+            }
         }
 
         Vector3 position = rb?.position ?? transform.position;
@@ -56,7 +79,7 @@ public class RandomNavMeshWanderer : MonoBehaviour
             _currentCornerIndex++;
             if (_currentCornerIndex >= path.corners.Length)
             {
-                PickNewDestination();
+                RebuildPathForCurrentMode();
             }
             return;
         }
@@ -74,7 +97,37 @@ public class RandomNavMeshWanderer : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
             transform.position += transform.forward * (moveSpeed * Time.fixedDeltaTime);
         }
+    }
 
+    private void RebuildPathForCurrentMode()
+    {
+        if (_followTarget != null && TrySetPathTo(_followTarget.position))
+        {
+            return;
+        }
+
+        PickNewDestination();
+    }
+
+    private bool TrySetPathTo(Vector3 destination)
+    {
+        Vector3 origin = rb ? rb.position : transform.position;
+        NavMeshPath newPath = new NavMeshPath();
+
+        if (!NavMesh.CalculatePath(origin, destination, NavMesh.AllAreas, newPath))
+        {
+            return false;
+        }
+
+        if (newPath.status != NavMeshPathStatus.PathComplete || newPath.corners.Length == 0)
+        {
+            return false;
+        }
+
+        path = newPath;
+        _currentDestination = destination;
+        _currentCornerIndex = newPath.corners.Length > 1 ? 1 : 0;
+        return true;
     }
 
     private void PickNewDestination()
@@ -91,24 +144,12 @@ public class RandomNavMeshWanderer : MonoBehaviour
                 continue;
             }
 
-            NavMeshPath newPath = new NavMeshPath();
-            if (!NavMesh.CalculatePath(origin, hit.position, NavMesh.AllAreas, newPath))
+            if (TrySetPathTo(hit.position))
             {
-                continue;
+                return;
             }
-
-            if (newPath.status != NavMeshPathStatus.PathComplete || newPath.corners.Length == 0)
-            {
-                continue;
-            }
-
-            path = newPath;
-            _currentDestination = hit.position;
-            _currentCornerIndex = newPath.corners.Length > 1 ? 1 : 0;
-            return;
         }
     }
-
 
     private void OnDrawGizmos()
     {
@@ -133,4 +174,3 @@ public class RandomNavMeshWanderer : MonoBehaviour
         Gizmos.DrawSphere(_currentDestination, 0.18f);
     }
 }
-

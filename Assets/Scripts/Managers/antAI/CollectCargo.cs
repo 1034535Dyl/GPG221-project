@@ -7,11 +7,13 @@ namespace Managers.antAI
         [SerializeField] private PathFinder pathFinder;
         [SerializeField] private IsenseMyGuy sense;
         [SerializeField] private Transform moverRoot;
+        [SerializeField] private SeeCargo seeCargoSensor;
+        [SerializeField] private RandomNavMeshWanderer movementController;
         [SerializeField] private string cargoTag = "cargo";
         [SerializeField] private float pickupDistance = 0.6f;
-        [SerializeField] private bool destroyCargoOnPickup = true;
 
-        private Transform targetCargo;
+        private Transform _targetCargo;
+        private Transform _previousPathTarget;
 
         private void Awake()
         {
@@ -29,16 +31,38 @@ namespace Managers.antAI
             {
                 sense = moverRoot.GetComponent<IsenseMyGuy>();
             }
+
+            if (seeCargoSensor == null)
+            {
+                seeCargoSensor = moverRoot.GetComponentInChildren<SeeCargo>();
+            }
+
+            if (movementController == null)
+            {
+                movementController = moverRoot.GetComponent<RandomNavMeshWanderer>();
+            }
         }
 
         private void Update()
         {
-            if (targetCargo == null || sense == null || sense.hasCargo)
+            if (sense == null || sense.hasCargo)
             {
                 return;
             }
 
-            if (Vector3.Distance(moverRoot.position, targetCargo.position) <= pickupDistance)
+            if (_targetCargo == null && sense.seeCargo && seeCargoSensor != null)
+            {
+                TrySetCargoTarget(seeCargoSensor.VisibleCargo);
+            }
+
+            if (_targetCargo == null)
+            {
+                return;
+            }
+
+            OverridePathToCargo();
+
+            if (Vector3.Distance(moverRoot.position, _targetCargo.position) <= pickupDistance)
             {
                 PickupCargo();
             }
@@ -47,16 +71,45 @@ namespace Managers.antAI
         private void OnTriggerEnter(Collider other)
         {
             TrySetCargoTarget(other.transform);
+
+            if (_targetCargo != null && other.transform == _targetCargo)
+            {
+                PickupCargo();
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             TrySetCargoTarget(collision.transform);
+
+            if (_targetCargo != null && collision.transform == _targetCargo)
+            {
+                PickupCargo();
+            }
+        }
+
+        private void OverridePathToCargo()
+        {
+            if (_targetCargo == null)
+            {
+                return;
+            }
+
+            if (pathFinder != null && pathFinder.targetTransform != _targetCargo)
+            {
+                _previousPathTarget = pathFinder.targetTransform;
+                pathFinder.targetTransform = _targetCargo;
+            }
+
+            if (movementController != null)
+            {
+                movementController.SetFollowTarget(_targetCargo);
+            }
         }
 
         private void TrySetCargoTarget(Transform candidate)
         {
-            if (candidate == null || targetCargo != null || (sense != null && sense.hasCargo))
+            if (candidate == null || _targetCargo != null || (sense != null && sense.hasCargo))
             {
                 return;
             }
@@ -66,18 +119,15 @@ namespace Managers.antAI
                 return;
             }
 
-            targetCargo = candidate;
-
-            if (pathFinder != null)
-            {
-                pathFinder.targetTransform = targetCargo;
-            }
+            _targetCargo = candidate;
 
             if (sense != null)
             {
                 sense.seeCargo = true;
                 sense.searchCargo = false;
             }
+
+            OverridePathToCargo();
         }
 
         private void PickupCargo()
@@ -89,25 +139,23 @@ namespace Managers.antAI
                 sense.seeCargo = false;
             }
 
-            if (pathFinder != null && pathFinder.targetTransform == targetCargo)
+            if (movementController != null)
             {
-                pathFinder.targetTransform = null;
+                movementController.ClearFollowTarget();
             }
 
-            if (targetCargo != null)
+            if (_targetCargo != null)
             {
-                if (destroyCargoOnPickup)
-                {
-                    Destroy(targetCargo.gameObject);
-                }
-                else
-                {
-                    targetCargo.SetParent(moverRoot);
-                    targetCargo.localPosition = Vector3.up * 0.6f;
-                }
+                Destroy(_targetCargo.gameObject);
             }
 
-            targetCargo = null;
+            if (pathFinder != null && pathFinder.targetTransform == _targetCargo)
+            {
+                pathFinder.targetTransform = _previousPathTarget;
+            }
+
+            _previousPathTarget = null;
+            _targetCargo = null;
         }
     }
 }
