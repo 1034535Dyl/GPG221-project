@@ -1,24 +1,26 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Spawner : MonoBehaviour
+namespace MyGuy.scripts
 {
-    [SerializeField]
-    private int amount;
-
-    [SerializeField]
-    private GameObject prefab;
-    
-    
-    public void Spawn()
+    public class Spawner : MonoBehaviour
     {
-        for (int i = 0; i < amount; i++)
+        [SerializeField]
+        private int amount;
+
+        [SerializeField]
+        private GameObject prefab;
+    
+    
+        public void Spawn()
         {
-            Instantiate(prefab, transform.position, Quaternion.Euler(
-                x: Random.Range(0, 5),
-                Random.Range(0f, 360f),
-                z: Random.Range(0, 5)));
+            for (int i = 0; i < amount; i++)
+            {
+                Instantiate(prefab, transform.position, Quaternion.Euler(
+                    x: Random.Range(0, 5),
+                    Random.Range(0f, 360f),
+                    z: Random.Range(0, 5)));
+            }
         }
     }
 }

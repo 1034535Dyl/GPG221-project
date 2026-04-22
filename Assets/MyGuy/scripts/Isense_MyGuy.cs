@@ -1,7 +1,7 @@
 using Anthill.AI;
 using UnityEngine;
 
-namespace Managers.antAI
+namespace MyGuy.scripts
 {
     public class IsenseMyGuy : MonoBehaviour, ISense
     {

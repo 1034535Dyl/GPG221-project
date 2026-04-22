@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class MoveForward : SteeringBehaviour_Base
+namespace MyGuy.scripts
 {
-   [SerializeField]
-   private Rigidbody rb;
-
-   [SerializeField]
-   private float speed = 100f;
-
-    void FixedUpdate()
+    public class MoveForward : SteeringBehaviour_Base
     {
-        rb.AddRelativeForce(0,0, speed);
-        // TurnToward.()
-        //#Debug.Log("Moving Forward");
+        [SerializeField]
+        private Rigidbody rb;
+
+        [SerializeField]
+        private float speed = 100f;
+
+        void FixedUpdate()
+        {
+            rb.AddRelativeForce(0,0, speed);
+            // TurnToward.()
+            //#Debug.Log("Moving Forward");
+        }
     }
 }

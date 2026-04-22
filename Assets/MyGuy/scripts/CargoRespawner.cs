@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Managers.antAI
+namespace MyGuy.scripts
 {
     public class CargoRespawner : MonoBehaviour
     {

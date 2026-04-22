@@ -1,12 +1,14 @@
 using Anthill.AI;
-using Managers.antAI;
 using UnityEngine;
 
-public class Placehoder : AntAIState
+namespace MyGuy.scripts
 {
-    public override void Create(GameObject aGameObject)
+    public class Placehoder : AntAIState
     {
-        base.Create(aGameObject);
-        aGameObject.GetComponent<IsenseMyGuy>().searchCargo = true;
+        public override void Create(GameObject aGameObject)
+        {
+            base.Create(aGameObject);
+            aGameObject.GetComponent<IsenseMyGuy>().searchCargo = true;
+        }
     }
 }

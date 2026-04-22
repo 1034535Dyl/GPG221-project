@@ -1,19 +1,21 @@
-using UnityEngine;
 using Anthill.AI;
+using UnityEngine;
 
-
-public partial class UnitSense : MonoBehaviour, ISense
+namespace MyGuy.scripts
 {
-    public bool hasCargo;
-    public bool nearBase;
-
-
-    void ISense.CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
+    public partial class UnitSense : MonoBehaviour, ISense
     {
-        aWorldState.Set(DeliveryBot.HasCargo, hasCargo);
-        aWorldState.Set(DeliveryBot.NearBase, nearBase);
+        public bool hasCargo;
+        public bool nearBase;
+
+
+        void ISense.CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
+        {
+            aWorldState.Set(DeliveryBot.HasCargo, hasCargo);
+            aWorldState.Set(DeliveryBot.NearBase, nearBase);
      
-        // HINT: When you have finished the AI Scenario, just export all conditions
-        // as enum and use it to set conditions from the code.
+            // HINT: When you have finished the AI Scenario, just export all conditions
+            // as enum and use it to set conditions from the code.
+        }
     }
 }

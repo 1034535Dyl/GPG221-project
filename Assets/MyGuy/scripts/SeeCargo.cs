@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Managers.antAI
+namespace MyGuy.scripts
 {
     public class SeeCargo : MonoBehaviour
     {

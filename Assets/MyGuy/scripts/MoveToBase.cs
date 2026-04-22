@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Managers.antAI
+namespace MyGuy.scripts
 {
     public class MoveToBase : MonoBehaviour
     {

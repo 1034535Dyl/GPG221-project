@@ -1,11 +1,16 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // Required for IPointerClickHandler
+using UnityEngine.EventSystems;
 
-public class SpawnButton : MonoBehaviour, IPointerClickHandler
+// Required for IPointerClickHandler
+
+namespace MyGuy.scripts
 {
-    public void OnPointerClick(PointerEventData eventData)
+    public class SpawnButton : MonoBehaviour, IPointerClickHandler
     {
-        // Define what happens when the button is clicked
-        Debug.Log("Button Clicked!");
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            // Define what happens when the button is clicked
+            Debug.Log("Button Clicked!");
+        }
     }
 }

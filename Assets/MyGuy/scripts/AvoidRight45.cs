@@ -1,35 +1,37 @@
 using UnityEngine;
 
-
-public class AvoidRight45 : SteeringBehaviour_Base
+namespace MyGuy.scripts
 {
-   [SerializeField]
-   private float maxDistance = 3f;
-
-    [SerializeField]
-    private Rigidbody rb;
-
-    [SerializeField]
-    private float turnSpeed = 15f;
-
-   private void FixedUpdate()
+   public class AvoidRight45 : SteeringBehaviour_Base
    {
-      RaycastHit hitInfo;
-      bool       didItHitAnything;
-      // 45 degree angle to the right
-      Vector3 rayDirection = Quaternion.Euler(0, 50, 0) * transform.forward;
-      didItHitAnything = Physics.Raycast(transform.position, rayDirection, out hitInfo, maxDistance);
+      [SerializeField]
+      private float maxDistance = 3f;
 
+      [SerializeField]
+      private Rigidbody rb;
 
-      if (didItHitAnything)
+      [SerializeField]
+      private float turnSpeed = 15f;
+
+      private void FixedUpdate()
       {
-         Debug.DrawLine(transform.position, hitInfo.point, Color.red);
-        rb.AddRelativeTorque(0, -turnSpeed, 0);
+         RaycastHit hitInfo;
+         bool       didItHitAnything;
+         // 45 degree angle to the right
+         Vector3 rayDirection = Quaternion.Euler(0, 50, 0) * transform.forward;
+         didItHitAnything = Physics.Raycast(transform.position, rayDirection, out hitInfo, maxDistance);
+
+
+         if (didItHitAnything)
+         {
+            Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+            rb.AddRelativeTorque(0, -turnSpeed, 0);
          
-      }
-      else
-      {
-         Debug.DrawLine(transform.position, transform.position + rayDirection * maxDistance, Color.green);
+         }
+         else
+         {
+            Debug.DrawLine(transform.position, transform.position + rayDirection * maxDistance, Color.green);
+         }
       }
    }
 }
